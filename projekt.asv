@@ -1,0 +1,7 @@
+%Detta blir pog
+load('huspriser55.mat')
+hist(pris)
+cdfplot(pris)
+prctile(pris, 90) % 10% dyraste husen
+prctile(pris,20) %20% billigaste husen
+length(pris(pris<100000))/length(pris) %Hur stor andel av husen kostar mindre än 10000
