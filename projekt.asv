@@ -41,17 +41,7 @@ X1 = [ones(150,1) boyta bad sovrum kamin tomt alder indkamin];
 
 X2 = [ones(150,1) boyta indkamin];
 [b2, lb2, r, r2, stats2] = regress(pris, X2);
-b3 = regress(pris, X2);
 
 
 scatter3(indkamin, boyta, pris, 'filled')
-
-indkaminfit = min(indkamin):100:max(indkamin);
-boytafit = min(boyta):100:max(boyta);
-[indkaminfit, boytafit] = meshgrid(indkaminfit, boytafit);
-prisfit = b3(1) + b3(2)*indkaminfit + b3(3)*boytafit + b3(4)*indkaminfit.*boytafit;
-mesh(indkaminfit, boytafit, prisfit)
-xlabel('Kamin')
-ylabel('Boyta')
-zlabel('Pris')
-
+hold on
