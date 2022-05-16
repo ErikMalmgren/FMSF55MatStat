@@ -44,4 +44,13 @@ X2 = [ones(150,1) boyta indkamin];
 
 
 scatter3(indkamin, boyta, pris, 'filled')
-hold on
+
+indkaminfit = min(indkamin):100:max(indkamin);
+boytafit = min(boyta):100:max(boyta);
+[indkaminfit, boytafit] = meshgrid(indkaminfit, boytafit);
+%prisfit = b2(1) + b2(2)*indkaminfit + b2(3)*boytafit + b2(4)*indkaminfit.*boytafit;
+mesh(indkaminfit, boytafit, prisfit)
+xlabel('Kamin')
+ylabel('Boyta')
+zlabel('Pris')
+
