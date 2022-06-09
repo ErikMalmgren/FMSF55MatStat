@@ -1,8 +1,13 @@
 %% Uppgift 1 och 2
 load('huspriser55.mat')
 histogram(pris)
+xlabel('Pris')
+ylabel('Antal')
 %figure
 %cdfplot(pris)
+
+figure
+probplot(pris)
 
 dyrast = prctile(pris, 90) % 10% dyraste husen
 billigast = prctile(pris,20) %20% billigaste husen
@@ -13,6 +18,7 @@ xNorm = (0:.1:370000);
 yNorm = normpdf(xNorm, 164583, 68267.9);
 figure
 plot(xNorm, yNorm)
+xlabel('Pris')
 
 %% Uppgift 3
 figure
@@ -28,14 +34,18 @@ normPrisKamin = fitdist(pris(indkamin==1), 'Normal');
 
 %% Uppgift 4
 addpath('reggui');
-
-reggui(boyta, pris)
+boytam2 = boyta.*0.09290304;
+reggui(boytam2, pris)
 
 %% Uppgift 5
 korrelationPris = corrcoef(huspriser);
 
 X1 = [ones(150,1) boyta bad sovrum kamin tomt alder indkamin];
 [b, lb, r, r2, stats] = regress(pris, X1);
+X1b = [ones(150, 1) boyta bad indkamin];
+[bb, lbb, rb, r2b, statsb] = regress(pris, X1b);
+X1c = [ones(150,1) boyta bad];
+[bc, lbc, rc, r2c, statsc] = regress(pris, X1c);
 
 %% Uppgift 6
 
